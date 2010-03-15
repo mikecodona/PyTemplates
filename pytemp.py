@@ -26,8 +26,12 @@ class br(html_element):
         return "<br />"
 
 class html(html_element):
+    def __init__(self, *children):
+        super(html, self).__init__(*children)
+        self._doctype = """"<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">"""
+
     def __str__(self):
-        return """"<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">""" + super(html, self).__str__()
+        return self._doctype + super(html, self).__str__()
 
 html_elements = ["h1", "h2", "h3", "p", "div", "span"]
 for he in html_elements:
